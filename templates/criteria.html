@@ -1,0 +1,47 @@
+<!-- templates/criteria.html -->
+
+{% extends "base.html" %}
+{% block content %}
+<div class="criteria-page">
+    <h2>Judging Criteria</h2>
+
+    <!-- Judges' Picture -->
+    <div class="judges-picture">
+        <img src="{{ url_for('static', filename='images/judges.png') }}" alt="Judges">
+    </div>
+
+    <!-- Criteria List -->
+    <div class="criteria-list">
+        <div class="criterion">
+            <h3>1. Empower People (40%)</h3>
+            <p>
+                Evaluate how effectively the project empowers its target users—whether ABAX customers, employees, or third-party developers. This includes making tasks easier, improving productivity, or enhancing user experience. A strong project will address a real need or pain point, providing a meaningful solution that truly benefits its users.
+            </p>
+        </div>
+        <div class="criterion">
+            <h3>2. Strategic Alignment (15%)</h3>
+            <p>
+                Does the project align with ABAX’s long-term goals and direction? Consider if it prepares ABAX for future trends, supports its mission, and has potential for growth in the industry.
+            </p>
+        </div>
+        <div class="criterion">
+            <h3>3. Innovation &amp; Creativity (15%)</h3>
+            <p>
+                How unique or inventive is the project? Evaluate if it introduces fresh ideas, uses new technologies, or improves on existing solutions in a novel way.
+            </p>
+        </div>
+        <div class="criterion">
+            <h3>4. Impact Potential (ROI &amp; Effort) (15%)</h3>
+            <p>
+                Assess the expected impact and return on investment, considering both the benefits (like cost savings or productivity boosts) and the level of effort required. Is it realistic to deliver quickly, and does it offer good value for the resources invested?
+            </p>
+        </div>
+        <div class="criterion">
+            <h3>5. Presentation and Demo Quality (15%)</h3>
+            <p>
+                Evaluates how effectively the team communicates their project and demonstrates its functionality. This includes the clarity of the presentation, the ability to showcase the project’s core features, and how convincingly the team demonstrates its value and usability.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

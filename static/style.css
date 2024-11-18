@@ -88,6 +88,7 @@ input[type="submit"] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 600;
 }
 
 input[type="submit"]:hover {
@@ -104,6 +105,15 @@ hr {
     list-style-type: none;
     padding: 0;
     margin-bottom: 20px;
+}
+
+.flashes li {
+    background-color: #FFD2D2;
+    color: #D8000C;
+    padding: 10px;
+    border: 1px solid #D8000C;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 
 table {
@@ -175,6 +185,41 @@ form input[type="submit"] {
     margin-top: 10px;
 }
 
+/* Criteria Page Styles */
+
+.criteria-page {
+    padding: 20px;
+}
+
+.judges-picture {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.judges-picture img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.criteria-list {
+    margin-top: 20px;
+}
+
+.criterion {
+    margin-bottom: 30px;
+}
+
+.criterion h3 {
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.criterion p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
 /* Responsive Design */
 
 @media (max-width: 768px) {
@@ -195,5 +240,19 @@ form input[type="submit"] {
     nav ul li {
         margin-right: 0;
         margin-bottom: 10px;
+    }
+
+    label {
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"] {
+        width: 100%;
+    }
+
+    form input[type="number"] {
+        width: 100%;
     }
 }

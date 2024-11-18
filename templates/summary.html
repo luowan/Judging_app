@@ -2,28 +2,27 @@
 {% block content %}
 <h2>Summary of Scores</h2>
 <table>
-    <tr>
-        <th>Project</th>
-        {% for judge in judges %}
-            <th>{{ judge.username }}</th>
+    <thead>
+        <tr>
+            <th>Project</th>
+            {% for judge in judges %}
+                <th>{{ judge.username }}</th>
+            {% endfor %}
+            <th>Average Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in summary_data %}
+            <tr>
+                <td>{{ project.project_name }}</td>
+                {% for judge in judges %}
+                    <td>
+                        {{ project.judges_scores.get(judge.username, 'No score yet') }}
+                    </td>
+                {% endfor %}
+                <td>{{ project.average_score }}</td>
+            </tr>
         {% endfor %}
-        <th>Total Score</th>
-    </tr>
-    {% for project in summary_data %}
-    <tr>
-        <td>{{ project.project_name }}</td>
-        {% for judge in judges %}
-            <td style="text-align: center;">
-                {% set judge_score = project.judges_scores[judge.username] %}
-                {% if judge_score == 'No score yet' %}
-                    <em>No score yet</em>
-                {% else %}
-                    {{ judge_score }}
-                {% endif %}
-            </td>
-        {% endfor %}
-        <td>{{ project.total_score }}</td>
-    </tr>
-    {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

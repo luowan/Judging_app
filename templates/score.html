@@ -14,19 +14,44 @@
 <form method="POST">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     {% for criterion in criteria %}
-        <label>{{ criterion.name }}:</label>
-        <input type="number" name="score_{{ criterion.id }}" min="1" max="10" required value="{{ existing_scores.get(criterion.id, '') }}">
+        <label>{{ criterion.name }} ({{ criterion.weight * 100 }}%):</label>
+        <input type="number" name="score_{{ criterion.id }}" min="0" max="10" required value="{{ existing_scores.get(criterion.id, '') }}">
     {% endfor %}
     <input type="submit" name="submit_scores" value="Submit Scores">
 </form>
 
 {% if existing_scores %}
     <h3>Your Submitted Scores for {{ project.name }}</h3>
-    <ul>
-        {% for criterion in criteria %}
-            <li><strong>{{ criterion.name }}:</strong> {{ existing_scores.get(criterion.id, 'Not Scored') }}</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Criterion</th>
+                <th>Score</th>
+                <th>Weight</th>
+                <th>Weighted Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for criterion in criteria %}
+                <tr>
+                    <td>{{ criterion.name }}</td>
+                    <td>{{ existing_scores.get(criterion.id, 'Not Scored') }}</td>
+                    <td>{{ criterion.weight * 100 }}%</td>
+                    <td>
+                        {% if weighted_scores.get(criterion.id) is not none %}
+                            {{ weighted_scores.get(criterion.id) }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3"><strong>Total Weighted Score</strong></td>
+                <td><strong>{{ total_weighted_score }}</strong></td>
+            </tr>
+        </tbody>
+    </table>
     <!-- Reset Scores Form -->
     <form method="POST" style="margin-top: 20px;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

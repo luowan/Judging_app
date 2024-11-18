@@ -13,15 +13,17 @@
             <img src="{{ url_for('static', filename='images/abax_logo.png') }}" alt="ABAX Logo">
             <h1>Hackathon Judging App</h1>
         </div>
+       <!-- base.html (within the nav section) -->
+
         <nav>
             {% if current_user.is_authenticated %}
                 <ul>
-                    {% if not current_user.is_admin %}
-                        <!-- No need to display 'Score Projects' link as it's accessible via project tabs -->
-                    {% endif %}
                     {% if current_user.is_admin %}
                         <li><a href="{{ url_for('summary') }}">Summary</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('score') }}">Score Projects</a></li>
                     {% endif %}
+                    <li><a href="{{ url_for('criteria') }}">Judging Criteria</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 </ul>
             {% else %}
