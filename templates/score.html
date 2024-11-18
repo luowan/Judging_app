@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Score Projects</h2>
-<nav>
+<nav class="project-tabs">
     {% for proj in all_projects %}
         {% if proj.id == project.id %}
-            <strong>{{ proj.name }}</strong>
+            <a href="{{ url_for('score', project_id=proj.id) }}" class="active">{{ proj.name }}</a>
         {% else %}
             <a href="{{ url_for('score', project_id=proj.id) }}">{{ proj.name }}</a>
         {% endif %}
-        {% if not loop.last %} | {% endif %}
     {% endfor %}
 </nav>
-<hr>
 <h3>Scoring: {{ project.name }}</h3>
 <form method="POST">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     {% for criterion in criteria %}
         <label>{{ criterion.name }}:</label>
-        <input type="number" name="score_{{ criterion.id }}" min="1" max="10" required value="{{ existing_scores.get(criterion.id, '') }}"><br><br>
+        <input type="number" name="score_{{ criterion.id }}" min="1" max="10" required value="{{ existing_scores.get(criterion.id, '') }}">
     {% endfor %}
     <input type="submit" name="submit_scores" value="Submit Scores">
 </form>
 
 {% if existing_scores %}
-    <h3>Your Submitted Scores for {{ project.name }}:</h3>
+    <h3>Your Submitted Scores for {{ project.name }}</h3>
     <ul>
         {% for criterion in criteria %}
-            <li>{{ criterion.name }}: {{ existing_scores.get(criterion.id, 'Not Scored') }}</li>
+            <li><strong>{{ criterion.name }}:</strong> {{ existing_scores.get(criterion.id, 'Not Scored') }}</li>
         {% endfor %}
     </ul>
     <!-- Reset Scores Form -->

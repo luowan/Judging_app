@@ -177,12 +177,13 @@ if __name__ == '__main__':
         # Add judges if not already added
         if Judge.query.count() == 0:
             judges = [
-                Judge(username='judge1', password='password1'),
-                Judge(username='judge2', password='password2'),
-                Judge(username='judge3', password='password3'),
-                Judge(username='judge4', password='password4'),
-                Judge(username='judge5', password='password5'),
-                Judge(username='judge6', password='password6'),
+                Judge(username='emma', password='password1'),
+                Judge(username='john', password='password2'),
+                Judge(username='sofia', password='password3'),
+                Judge(username='erik', password='password4'),
+                Judge(username='johnole', password='password5'),
+                Judge(username='silje', password='password6'),
+                Judge(username='wan', password='password7'),
                 Judge(username='admin', password='adminpassword', is_admin=True),
             ]
             db.session.add_all(judges)
@@ -199,11 +200,11 @@ if __name__ == '__main__':
         # Add criteria
         if Criteria.query.count() == 0:
             criteria_list = [
-                Criteria(name='Innovation'),
-                Criteria(name='Feasibility'),
-                Criteria(name='Design'),
-                Criteria(name='Impact'),
-                Criteria(name='Presentation'),
+                Criteria(name='Empower People (40%)'),
+                Criteria(name='Strategic Alignment (15%)'),
+                Criteria(name='Innovation & Creativity (15%)'),
+                Criteria(name='Impact Potential (ROI & Effort) (15%)'),
+                Criteria(name='Presentation and Demo Quality (15%)'),
             ]
             db.session.add_all(criteria_list)
             db.session.commit()

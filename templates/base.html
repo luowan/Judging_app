@@ -2,23 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Judging App</title>
+    <title>ABAX Hackathon Judging App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        {% if current_user.is_authenticated %}
-            <a href="{{ url_for('logout') }}">Logout</a>
-            {% if not current_user.is_admin %}
-                <!-- No need to display 'Score Projects' link as it's accessible via project tabs -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/abax_logo.png') }}" alt="ABAX Logo">
+            <h1>Hackathon Judging App</h1>
+        </div>
+        <nav>
+            {% if current_user.is_authenticated %}
+                <ul>
+                    {% if not current_user.is_admin %}
+                        <!-- No need to display 'Score Projects' link as it's accessible via project tabs -->
+                    {% endif %}
+                    {% if current_user.is_admin %}
+                        <li><a href="{{ url_for('summary') }}">Summary</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            {% else %}
+                <ul>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                </ul>
             {% endif %}
-            {% if current_user.is_admin %}
-                <a href="{{ url_for('summary') }}">Summary</a>
-            {% endif %}
-        {% else %}
-            <a href="{{ url_for('login') }}">Login</a>
-        {% endif %}
-    </nav>
+        </nav>
+    </header>
     <div class="container">
         {% with messages = get_flashed_messages() %}
             {% if messages %}

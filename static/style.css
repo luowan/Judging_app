@@ -1,107 +1,110 @@
 /* General Styles */
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    background-color: #F0F0F0;
+    color: #333;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    color: #333;
+header {
+    background-color: #003366;
+    color: #FFFFFF;
+    padding: 10px 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.logo-container h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+h2, h3 {
+    color: #003366;
 }
 
 label {
     display: inline-block;
     width: 200px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 input[type="text"],
 input[type="password"],
 input[type="number"] {
-    width: 200px;
-    padding: 5px;
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
 }
 
 input[type="number"] {
-    width: 60px;
+    width: 80px;
 }
 
 input[type="submit"] {
     padding: 10px 20px;
-    margin-top: 10px;
+    background-color: #0070C0;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #005A9E;
 }
 
 hr {
     margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #CCC;
 }
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    margin-bottom: 5px;
-}
-
-/* Navigation Styles */
-
-nav {
-    margin-bottom: 20px;
-}
-
-nav a {
-    margin: 0 5px;
-    text-decoration: none;
-    color: #007BFF;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-nav strong {
-    margin: 0 5px;
-    font-weight: bold;
-    color: #000;
-}
-
-/* Flash Messages */
 
 .flashes {
     list-style-type: none;
     padding: 0;
-    color: red;
     margin-bottom: 20px;
 }
-
-.flashes li {
-    margin-bottom: 5px;
-}
-
-/* Form Styles */
-
-form {
-    margin-bottom: 20px;
-}
-
-form label {
-    font-weight: bold;
-}
-
-form input[type="number"] {
-    width: 60px;
-}
-
-form input[type="submit"] {
-    margin-top: 10px;
-}
-
-/* Table Styles */
 
 table {
     width: 100%;
@@ -110,7 +113,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #aaa;
+    border: 1px solid #AAA;
 }
 
 th, td {
@@ -119,34 +122,78 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #E6E6E6;
 }
 
-td {
-    vertical-align: top;
-    text-align: center;
+/* Navigation Tabs */
+
+nav.project-tabs {
+    margin-bottom: 20px;
 }
 
-/* Emphasis Styles */
-
-em {
-    color: #888;
+nav.project-tabs a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 5px;
+    background-color: #E6E6E6;
+    color: #003366;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #CCC;
+    border-bottom: none;
 }
 
-/* Additional Styles */
-
-body {
-    background-color: #f9f9f9;
+nav.project-tabs a.active, nav.project-tabs a:hover {
+    background-color: #FFFFFF;
+    color: #003366;
+    border-bottom: 1px solid #FFFFFF;
 }
 
-h3 {
-    color: #555;
+nav.project-tabs a:last-child {
+    margin-right: 0;
 }
 
-a {
-    color: #007BFF;
+form {
+    background-color: #FAFAFA;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #CCC;
 }
 
-a:hover {
-    text-decoration: underline;
+form label {
+    width: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="number"] {
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+form input[type="submit"] {
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .logo-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo-container img {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }
