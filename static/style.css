@@ -1,258 +1,569 @@
-/* General Styles */
+/* ===============================
+   General Styles
+   =============================== */
 
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
+/* Reset some default browser styles */
+* {
     margin: 0;
-    background-color: #F0F0F0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
     color: #333;
+    line-height: 1.6;
+    padding-bottom: 50px; /* To prevent content from being hidden behind the footer */
 }
 
+/* Container */
 .container {
-    max-width: 1000px;
-    margin: 20px auto;
-    background-color: #FFFFFF;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
 }
 
-header {
-    background-color: #003366;
-    color: #FFFFFF;
-    padding: 10px 20px;
+/* ===============================
+   Navigation Bar
+   =============================== */
+
+nav {
+    background-color: #f8f9fa; /* Soft neutral color */
+    border-bottom: 1px solid #ddd; /* Subtle divider line */
+    padding: 15px 0;
+    margin-bottom: 20px;
 }
 
-.logo-container {
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
     display: flex;
     align-items: center;
 }
 
-.logo-container img {
-    height: 50px;
-    margin-right: 15px;
+nav .logo img {
+    max-height: 150px; /* Adjust for the new logo's dimensions */
+    height: auto;
 }
 
-.logo-container h1 {
-    font-size: 24px;
-    margin: 0;
+/* Responsive Logo */
+@media (max-width: 768px) {
+    nav .logo img {
+        max-width: 100px;
+    }
 }
 
+/* Navigation Links */
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 10px 0 0 0;
+    list-style: none;
     display: flex;
+    align-items: center;
 }
 
 nav ul li {
-    margin-right: 15px;
+    margin-left: 20px;
 }
 
 nav ul li a {
-    color: #FFFFFF;
+    color: #35424a;
     text-decoration: none;
-    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
+nav ul li a.active,
 nav ul li a:hover {
-    text-decoration: underline;
+    color: #1d2124; /* Darker for hover */
+    border-bottom: 2px solid #35424a;
 }
 
-h2, h3 {
-    color: #003366;
-}
+/* ===============================
+   Header
+   =============================== */
 
-label {
-    display: inline-block;
-    width: 200px;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="number"] {
-    width: 300px;
-    padding: 8px;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-}
-
-input[type="number"] {
-    width: 80px;
-}
-
-input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #0070C0;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-input[type="submit"]:hover {
-    background-color: #005A9E;
-}
-
-hr {
-    margin: 20px 0;
-    border: 0;
-    border-top: 1px solid #CCC;
-}
-
-.flashes {
-    list-style-type: none;
-    padding: 0;
+header {
+    background-color: #e2e2e2;
+    padding: 20px 0;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.flashes li {
-    background-color: #FFD2D2;
-    color: #D8000C;
-    padding: 10px;
-    border: 1px solid #D8000C;
-    border-radius: 4px;
+header h1 {
+    font-size: 36px;
     margin-bottom: 10px;
 }
 
+header p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* ===============================
+   Forms
+   =============================== */
+
+/* Form Container */
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Form Labels */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Form Inputs */
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Form Buttons */
+form input[type="submit"],
+form button {
+    background-color: #35424a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+    background-color: #1f2a30;
+}
+
+/* Disabled Button */
+form button:disabled,
+form input[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Flash Messages */
+.flash-message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ===============================
+   Tables
+   =============================== */
+
+/* General Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
 }
 
-table, th, td {
-    border: 1px solid #AAA;
-}
-
-th, td {
-    padding: 10px;
+table th,
+table td {
+    border: 1px solid #dddddd;
     text-align: left;
+    padding: 12px;
+    font-size: 16px;
 }
 
-th {
-    background-color: #E6E6E6;
+table th {
+    background-color: #35424a;
+    color: #ffffff;
 }
 
-/* Navigation Tabs */
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-nav.project-tabs {
+table tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* Responsive Tables */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    table th {
+        display: none;
+    }
+}
+
+/* ===============================
+   Buttons
+   =============================== */
+
+/* Primary Button */
+.btn-primary {
+    background-color: #35424a;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1f2a30;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* ===============================
+   Links
+   =============================== */
+
+a {
+    color: #35424a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #1f2a30;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+
+footer {
+    background-color: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* ===============================
+   Specific Page Styles
+   =============================== */
+
+/* Login Page */
+.login-container {
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Score Page */
+.project-tabs {
     margin-bottom: 20px;
 }
 
-nav.project-tabs a {
+.project-tabs a {
     display: inline-block;
     padding: 10px 15px;
     margin-right: 5px;
-    background-color: #E6E6E6;
-    color: #003366;
-    text-decoration: none;
-    border-radius: 4px 4px 0 0;
-    border: 1px solid #CCC;
-    border-bottom: none;
-}
-
-nav.project-tabs a.active, nav.project-tabs a:hover {
-    background-color: #FFFFFF;
-    color: #003366;
-    border-bottom: 1px solid #FFFFFF;
-}
-
-nav.project-tabs a:last-child {
-    margin-right: 0;
-}
-
-form {
-    background-color: #FAFAFA;
-    padding: 20px;
+    background-color: #dddddd;
+    color: #333333;
     border-radius: 4px;
-    border: 1px solid #CCC;
+    transition: background-color 0.3s ease;
 }
 
-form label {
-    width: auto;
-    display: block;
-    margin-bottom: 5px;
+.project-tabs a.active,
+.project-tabs a:hover {
+    background-color: #35424a;
+    color: #ffffff;
 }
 
-form input[type="number"] {
-    width: 100px;
-    margin-bottom: 15px;
+/* Summary Page */
+.summary-table {
+    overflow-x: auto;
 }
 
-form input[type="submit"] {
-    margin-top: 10px;
-}
+/* ===============================
+   Responsive Design
+   =============================== */
 
-/* Criteria Page Styles */
-
-.criteria-page {
-    padding: 20px;
-}
-
-.judges-picture {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.judges-picture img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.criteria-list {
-    margin-top: 20px;
-}
-
-.criterion {
-    margin-bottom: 30px;
-}
-
-.criterion h3 {
-    color: #003366;
-    margin-bottom: 10px;
-}
-
-.criterion p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-/* Responsive Design */
-
-@media (max-width: 768px) {
-    .logo-container {
+/* Ensure content is readable on small devices */
+@media (max-width: 600px) {
+    nav .container {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .logo-container img {
-        margin-bottom: 10px;
-    }
-
     nav ul {
         flex-direction: column;
-        margin: 0;
+        width: 100%;
     }
 
     nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
+        margin: 10px 0;
     }
 
-    label {
+    header h1 {
+        font-size: 28px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    form input[type="submit"],
+    form button {
         width: 100%;
     }
 
-    input[type="text"],
-    input[type="password"],
-    input[type="number"] {
+    .project-tabs a {
         width: 100%;
+        margin-bottom: 5px;
     }
 
-    form input[type="number"] {
-        width: 100%;
+    /* Judges' Picture on Mobile */
+    .judges-picture img {
+        max-width: 150px;
+    }
+
+    /* Increased spacing between numbered sections */
+    .judging-criteria h3 {
+        margin-top: 40px;
+    }
+
+    .divider {
+        margin: 40px 0;
+    }
+}
+
+/* ===============================
+   Judging Criteria Page Specific Styles
+   =============================== */
+
+/* Container for Judging Criteria */
+.judging-criteria {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Judges' Picture Styling */
+.judges-picture {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.judges-picture img {
+    max-width: 800px; /* Adjust based on your image size */
+    height: auto;
+    border-radius: 8px; /* Optional: Rounds the corners */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Responsive Judges' Picture */
+@media (max-width: 768px) {
+    .judges-picture img {
+        max-width: 200px; /* Smaller size on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .judges-picture img {
+        max-width: 150px; /* Even smaller on mobile */
+    }
+}
+
+/* Section Headings */
+.judging-criteria h2 {
+    color: #35424a;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.judging-criteria h3 {
+    color: #35424a;
+    margin-top: 40px; /* Added spacing before each numbered section */
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.judging-criteria h4 {
+    color: #35424a;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.judging-criteria p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.judging-criteria ol, 
+.judging-criteria ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.judging-criteria li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Nested Lists Indentation */
+.judging-criteria ul.sub-list {
+    list-style-type: disc;
+    margin-left: 40px; /* Increased indentation for sub-lists */
+}
+
+.judging-criteria ul.sub-sub-list {
+    list-style-type: circle;
+    margin-left: 60px; /* Further indentation for sub-sub-lists */
+}
+
+.judging-criteria ul.nested-list {
+    list-style-type: square;
+    margin-left: 60px; /* Further indentation for nested lists */
+}
+
+/* Divider Styling */
+.divider {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 40px 0;
+}
+
+/* Tables within Judging Criteria */
+.scoring-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.scoring-table th,
+.scoring-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.scoring-table th {
+    background-color: #35424a;
+    color: #ffffff;
+}
+
+.scoring-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.scoring-table tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* Responsive Tables within Judging Criteria */
+@media (max-width: 768px) {
+    .scoring-table, 
+    .scoring-table thead, 
+    .scoring-table tbody, 
+    .scoring-table th, 
+    .scoring-table td, 
+    .scoring-table tr {
+        display: block;
+    }
+
+    .scoring-table tr {
+        margin-bottom: 15px;
+    }
+
+    .scoring-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .scoring-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .scoring-table th {
+        display: none;
     }
 }

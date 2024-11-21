@@ -1,49 +1,60 @@
+<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ABAX Hackathon Judging App</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Rangers Hackathon</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- Include Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="{{ url_for('static', filename='images/abax_logo.png') }}" alt="ABAX Logo">
-            <h1>Hackathon Judging App</h1>
-        </div>
-       <!-- base.html (within the nav section) -->
-
-        <nav>
-            {% if current_user.is_authenticated %}
-                <ul>
-                    {% if current_user.is_admin %}
-                        <li><a href="{{ url_for('summary') }}">Summary</a></li>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/app_logo.png') }}" alt="ABAX Logo">
+            </div>
+            <ul>
+                {% if request.endpoint != 'login' %}
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.is_admin %}
+                            <!-- Admin-Specific Links -->
+                            <li><a href="{{ url_for('summary') }}" class="{% if request.endpoint == 'summary' %}active{% endif %}">Summary</a></li>
+                        {% else %}
+                            <!-- Judge-Specific Links -->
+                            <li><a href="{{ url_for('score') }}" class="{% if request.endpoint == 'score' %}active{% endif %}">Score Projects</a></li>
+                        {% endif %}
+                        <!-- Common Links for Authenticated Users -->
+                        <li><a href="{{ url_for('criteria') }}" class="{% if request.endpoint == 'criteria' %}active{% endif %}">Judging Criteria</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('score') }}">Score Projects</a></li>
+                        <!-- Only Login Link Visible to Unauthenticated Users -->
+                        <li><a href="{{ url_for('login') }}" class="{% if request.endpoint == 'login' %}active{% endif %}">Login</a></li>
                     {% endif %}
-                    <li><a href="{{ url_for('criteria') }}">Judging Criteria</a></li>
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                </ul>
-            {% else %}
-                <ul>
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                </ul>
-            {% endif %}
-        </nav>
-    </header>
+                {% else %}
+                    <!-- On Login Page: Only Show Login Link -->
+                    <li><a href="{{ url_for('login') }}" class="{% if request.endpoint == 'login' %}active{% endif %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    
     <div class="container">
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-                <ul class="flashes">
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             {% endif %}
         {% endwith %}
         {% block content %}{% endblock %}
     </div>
+    
+    <footer>
+        <p>&copy; {{ current_year }} ABAX Hackathon. All rights reserved.</p>
+    </footer>
 </body>
 </html>

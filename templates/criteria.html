@@ -1,47 +1,147 @@
-<!-- templates/criteria.html -->
-
 {% extends "base.html" %}
 {% block content %}
-<div class="criteria-page">
-    <h2>Judging Criteria</h2>
-
-    <!-- Judges' Picture -->
+<div class="judging-criteria">
+    <!-- Judges' Picture Section -->
     <div class="judges-picture">
-        <img src="{{ url_for('static', filename='images/judges.png') }}" alt="Judges">
+        <img src="{{ url_for('static', filename='images/judges.png') }}" alt="Judges' Panel">
     </div>
 
-    <!-- Criteria List -->
-    <div class="criteria-list">
-        <div class="criterion">
-            <h3>1. Empower People (40%)</h3>
-            <p>
-                Evaluate how effectively the project empowers its target users—whether ABAX customers, employees, or third-party developers. This includes making tasks easier, improving productivity, or enhancing user experience. A strong project will address a real need or pain point, providing a meaningful solution that truly benefits its users.
-            </p>
-        </div>
-        <div class="criterion">
-            <h3>2. Strategic Alignment (15%)</h3>
-            <p>
-                Does the project align with ABAX’s long-term goals and direction? Consider if it prepares ABAX for future trends, supports its mission, and has potential for growth in the industry.
-            </p>
-        </div>
-        <div class="criterion">
-            <h3>3. Innovation &amp; Creativity (15%)</h3>
-            <p>
-                How unique or inventive is the project? Evaluate if it introduces fresh ideas, uses new technologies, or improves on existing solutions in a novel way.
-            </p>
-        </div>
-        <div class="criterion">
-            <h3>4. Impact Potential (ROI &amp; Effort) (15%)</h3>
-            <p>
-                Assess the expected impact and return on investment, considering both the benefits (like cost savings or productivity boosts) and the level of effort required. Is it realistic to deliver quickly, and does it offer good value for the resources invested?
-            </p>
-        </div>
-        <div class="criterion">
-            <h3>5. Presentation and Demo Quality (15%)</h3>
-            <p>
-                Evaluates how effectively the team communicates their project and demonstrates its functionality. This includes the clarity of the presentation, the ability to showcase the project’s core features, and how convincingly the team demonstrates its value and usability.
-            </p>
-        </div>
-    </div>
+    <h2>Judging Criteria</h2>
+    <p>The projects will be evaluated based on the following criteria:</p>
+    
+    <ol>
+        <li>
+            <strong>Empower People (40%)</strong>
+            <p>How well does the project empower individuals and teams within the organization?</p>
+        </li>
+        <li>
+            <strong>Strategic Alignment (15%)</strong>
+            <p>How closely does the project align with ABAX's strategic goals and objectives?</p>
+        </li>
+        <li>
+            <strong>Innovation & Creativity (15%)</strong>
+            <p>How innovative and creative is the solution in addressing the problem?</p>
+        </li>
+        <li>
+            <strong>Impact Potential (ROI & Effort) (15%)</strong>
+            <p>What is the potential return on investment and how feasible is the implementation effort?</p>
+        </li>
+        <li>
+            <strong>Presentation and Demo Quality (15%)</strong>
+            <p>How well was the project presented and demonstrated to the audience?</p>
+        </li>
+    </ol>
+
+    <!-- Divider -->
+    <hr class="divider">
+
+    <h2>ABAX Hackathon Scoring System Rules</h2>
+    <p>The ABAX Hackathon scoring system is designed to fairly and transparently evaluate each project based on judges’ assessments and employee votes. The total possible score for a project is <strong>100 points</strong>, divided between judges’ evaluations and employee voting.</p>
+    
+    <h3>1. Judges’ Evaluation (70 Points Total)</h3>
+    <ul class="sub-list">
+        <li><strong>Number of Judges:</strong> 7</li>
+        <li><strong>Scoring Range per Judge:</strong> Each judge awards a score between <strong>0 and 10</strong> for each project.</li>
+        <li><strong>Total Judges’ Score per Project:</strong> The sum of all judges’ scores, ranging from <strong>0 to 70 points</strong>.</li>
+    </ul>
+    
+    <h4>Calculation Details</h4>
+    <ul class="sub-list">
+        <li><strong>Maximum Possible Score from Judges:</strong> 7 judges × 10 points = <strong>70 points</strong></li>
+        <li><strong>Minimum Possible Score from Judges:</strong> 7 judges × 0 points = <strong>0 points</strong></li>
+    </ul>
+    
+    <h3>2. Employee Voting (30 Points Total)</h3>
+    <ul class="sub-list">
+        <li><strong>Voting Eligibility:</strong> All ABAX employees are invited to participate in the voting process.</li>
+        <li><strong>Voting Mechanism:</strong> Employees vote for their favorite projects.</li>
+        <li><strong>Points Allocation Based on Employee Votes:</strong></li>
+    </ul>
+    
+    <table class="scoring-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Points Awarded</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st Place</td>
+                <td>30 points</td>
+            </tr>
+            <tr>
+                <td>2nd Place</td>
+                <td>25 points</td>
+            </tr>
+            <tr>
+                <td>3rd Place</td>
+                <td>20 points</td>
+            </tr>
+            <tr>
+                <td>4th Place</td>
+                <td>15 points</td>
+            </tr>
+            <tr>
+                <td>5th Place</td>
+                <td>10 points</td>
+            </tr>
+            <tr>
+                <td>6th Place</td>
+                <td>5 points</td>
+            </tr>
+            <tr>
+                <td>7th Place and below</td>
+                <td>0 points</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p><strong>Tie Handling:</strong> In case of a tie in employee votes, the projects will share the points for the tied positions equally.</p>
+    
+    <h4>Example</h4>
+    <p>If two projects tie for 2nd place, both projects receive:</p>
+    <p><strong>(25 points for 2nd place + 20 points for 3rd place) ÷ 2 = 22.5 points each.</strong></p>
+    
+    <h3>3. Total Project Score</h3>
+    <ul class="sub-list">
+        <li><strong>Maximum Total Score:</strong> 100 points (70 from judges + 30 from employee voting)</li>
+        <li><strong>Minimum Total Score:</strong> 0 points</li>
+    </ul>
+    <p><strong>Final Score Calculation:</strong> Total Score for a Project = <em>Sum of Judges’ Scores</em> + <em>Employee Voting Points</em></p>
+    
+    <h3>4. Determining the Winners</h3>
+    <ul class="sub-list">
+        <li>Projects are ranked based on their <strong>Total Project Scores</strong>.</li>
+        <li>The project with the <strong>highest total score</strong> is declared the <strong>winner</strong> of the hackathon.</li>
+        <li><strong>Runners-up</strong> are determined by descending order of total scores.</li>
+        <li><strong>In Case of a Tie:</strong></li>
+        <ul class="sub-sub-list">
+            <li>The project with the higher <strong>Judges’ Total Score</strong> will be ranked higher.</li>
+            <li>If the tie persists, the projects share the position.</li>
+        </ul>
+    </ul>
+    
+    <h3>5. Scoring Guidelines</h3>
+    <h4>Judges’ Scoring</h4>
+    <ul class="sub-list">
+        <li><strong>Evaluation Criteria:</strong> Judges will score projects based on predefined criteria, such as:
+            <ul class="nested-list">
+                <li>Empower People</li>
+                <li>Strategic Alignment</li>
+                <li>Innovation & Creativity</li>
+                <li>Impact Potential (ROI & Effort)</li>
+                <li>Presentation and Demo Quality</li>
+            </ul>
+        </li>
+        <li><strong>Scoring Scale:</strong>
+            <ul class="nested-list">
+                <li><strong>0:</strong> Does not meet the criterion at all.</li>
+                <li><strong>5:</strong> Meets the criterion satisfactorily.</li>
+                <li><strong>10:</strong> Exceeds the criterion exceptionally.</li>
+            </ul>
+        </li>
+        <li><strong>Independence:</strong> Judges must evaluate projects independently without consulting other judges.</li>
+    </ul>
 </div>
 {% endblock %}
